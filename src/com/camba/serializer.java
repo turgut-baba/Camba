@@ -4,7 +4,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class serializer {
+/*
+    List<Cariler> current_cari = serializer.DeSerializeCari();
+    serializer.serializeCari(current_cari,"ahmet","0 553 050 98 56",432);
+    Cariler displayed_Cari = null;
+
+ */
+
+public class serializer {
 
     private static final String SAMPLE_CSV_FILE_PATH = "./ser.txt";
 
@@ -38,24 +45,13 @@ class serializer {
         return e;
     }
 
-    //TODO: FIX THIS SHIT
     static void serializeCari(List<Cariler> Cari_List,String name,String tel, int receivable){
         Cariler new_cari = new Cariler();
         new_cari.Name = name;
         new_cari.Tel = tel;
         new_cari.Receivable = receivable;
-        //List<Cariler> avadible_cari = new ArrayList<>();
         Cari_List.add(new_cari);
         serializer.write(Cari_List);
-    }
-    static void new_serializeCari(String name,String tel, int receivable){
-        Cariler new_cari = new Cariler();
-        new_cari.Name = name;
-        new_cari.Tel = tel;
-        new_cari.Receivable = receivable;
-        List<Cariler> avadible_cari = new ArrayList<>();
-        avadible_cari.add(new_cari);
-        serializer.write(avadible_cari);
     }
 
     static List<Cariler> DeSerializeCari(){
@@ -74,3 +70,19 @@ class serializer {
         return serializer.read();
     }
 }
+
+    /*
+    Backup cari:
+
+    static void new_serializeCari(String name,String tel, int receivable){
+        Cariler new_cari = new Cariler();
+        new_cari.Name = name;
+        new_cari.Tel = tel;
+        new_cari.Receivable = receivable;
+        List<Cariler> avadible_cari = new ArrayList<>();
+        avadible_cari.add(new_cari);
+        serializer.write(avadible_cari);
+    }
+
+     */
+

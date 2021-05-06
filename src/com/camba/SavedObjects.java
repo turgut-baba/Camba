@@ -1,6 +1,6 @@
 package com.camba;
 
-class Cariler implements java.io.Serializable{
+public class Cariler implements java.io.Serializable{
     String Name;
     String Tel;
     int Receivable;

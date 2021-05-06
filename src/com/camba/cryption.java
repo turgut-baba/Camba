@@ -114,7 +114,5 @@ public class cryption {
         }catch (IOException o){
             System.out.println(o);
         }
-
-
     }
 }
