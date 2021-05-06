@@ -1,11 +1,14 @@
 package com.camba;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class serializer {
-    private static final String SAMPLE_CSV_FILE_PATH = "./new.csv";
 
-    static void write(Employee e){
+    private static final String SAMPLE_CSV_FILE_PATH = "./ser.txt";
+
+    private static <CURRENT_OBJECT> void write(CURRENT_OBJECT e){
         try {
             FileOutputStream fileOut =
                     new FileOutputStream(SAMPLE_CSV_FILE_PATH);
@@ -18,7 +21,7 @@ class serializer {
         }
     }
 
-    static <CURRENT_OBJECT> CURRENT_OBJECT read(){
+    private static <CURRENT_OBJECT> CURRENT_OBJECT read(){
         CURRENT_OBJECT e = null;
         try {
             FileInputStream fileIn = new FileInputStream(SAMPLE_CSV_FILE_PATH);
@@ -33,5 +36,41 @@ class serializer {
             c.printStackTrace();
         }
         return e;
+    }
+
+    //TODO: FIX THIS SHIT
+    static void serializeCari(List<Cariler> Cari_List,String name,String tel, int receivable){
+        Cariler new_cari = new Cariler();
+        new_cari.Name = name;
+        new_cari.Tel = tel;
+        new_cari.Receivable = receivable;
+        //List<Cariler> avadible_cari = new ArrayList<>();
+        Cari_List.add(new_cari);
+        serializer.write(Cari_List);
+    }
+    static void new_serializeCari(String name,String tel, int receivable){
+        Cariler new_cari = new Cariler();
+        new_cari.Name = name;
+        new_cari.Tel = tel;
+        new_cari.Receivable = receivable;
+        List<Cariler> avadible_cari = new ArrayList<>();
+        avadible_cari.add(new_cari);
+        serializer.write(avadible_cari);
+    }
+
+    static List<Cariler> DeSerializeCari(){
+        return serializer.read();
+        /*
+        List<Project> current_project = serializer.read();
+        return current_project;
+        */
+    }
+
+    static void serializeProject(){
+        List<Project> avadible_project = new ArrayList<>();
+        serializer.write(avadible_project);
+    }
+    static List<Project> DeSerializeProject(){
+        return serializer.read();
     }
 }
